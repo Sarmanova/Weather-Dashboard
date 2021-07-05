@@ -1,0 +1,124 @@
+body {
+    overflow: hidden;
+    margin: 0;
+}
+
+header {
+    background: deepskyblue;
+    /* background: linear-gradient( 90deg, rgba(51, 30, 61, 1) 0%, rgba(21, 0, 255, 1) 100%); */
+    color: blueviolet;
+    font-size: 25px;
+    font-weight: bold;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* header h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+} */
+
+aside h2 {
+    font-size: 35px;
+    font-weight: bold;
+    color: blueviolet;
+}
+
+input[type="text"] {
+    padding: 2vh 1vw;
+    font-size: 1.5rem;
+    border-radius: 25px;
+}
+
+button {
+    margin: 1vh 0vw;
+    width: 70%;
+    border-radius: 25px;
+}
+
+#sidebar {
+    margin-top: 3vh;
+}
+
+#recentSearch {
+    margin: 0;
+}
+
+#recentSearch ul {
+    border-top: 3px solid brown;
+    padding: 0;
+}
+
+.listStyle {
+    justify-content: center;
+    background-color: rgb(148, 110, 110);
+    margin: 2vh 0vw;
+    padding: 1vh 0vw;
+    border-radius: 10px;
+    font-size: 150%;
+}
+
+#currentDayWeather {
+    border: 2px solid rgb(209, 100, 191);
+    margin-top: 2vh;
+    margin-right: 1vw;
+    margin-left: 1vw;
+    max-height: 60%;
+}
+
+#currentDayWeather h1 {
+    font-size: 20px;
+    padding-top: 5vh;
+    font-weight: bold;
+}
+
+#currentDayWeather h2 {
+    font-size: 1.5rem;
+}
+
+#fiveDayWeather {
+    align-content: flex-start;
+    justify-content: space-between;
+    margin: -0vh 1vw;
+}
+
+#fiveDayWeather h2 {
+    font-size: 2rem;
+    align-self: flex-end;
+    float: left;
+    padding-left: 0;
+    font-weight: bold;
+}
+
+.myCard {
+    max-width: 20rem;
+    max-height: 20rem;
+    height: 20rem;
+}
+
+.myCardHeader {
+    font-size: 1.7rem;
+    font-weight: bold;
+    letter-spacing: 0.05rem;
+    padding: 0;
+    padding-top: 1vh;
+}
+
+.myCardText {
+    font-size: 130%;
+    font-weight: 600;
+    padding: 1.5vh 0vw;
+}
+
+.myCardBody {
+    padding: 0;
+    padding: 2vh 0 0.5vw 0;
+}
+
+.myCardPhoto {
+    margin: -26px;
+}
