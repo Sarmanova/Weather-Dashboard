@@ -14,11 +14,14 @@ var fiveDayHumidity = $(".myCardHumidity");
 var fiveDayDate = $(".myCardDate");
 // Input Button
 var submitBtn = $("#submitBtn");
-// normal JS variables
-var userInput = "Dallas";
+var recentSearch = $("#recentSearch");
+
+var currentDayWeather = $("#currentDayWeather");
+var userInput = $("#userInfo");
 var saveCity = [];
 submitBtn.click(function() {
     userInput = $("#userInfo").val();
+    getAPIKey();
 });
 
 function getAPIKey() {
@@ -46,7 +49,11 @@ function getAPIKey() {
                 .then(function(data2) {
                     console.log(data2);
                     dayUV.text("UV Index: " + data2.current.uvi);
-                    dayIcon.prepend('<img src = "http://openweathermap.org/img/wn/' + data2.current.weather[0].icon + '@2x.png" />');
+                    dayIcon.prepend(
+                        '<img src = "http://openweathermap.org/img/wn/' +
+                        data2.current.weather[0].icon +
+                        '@2x.png" />'
+                    );
                     dayTemp.text("Temp: " + data2.current.temp + "°F");
                     dayWind.text("Wind: " + data2.current.wind_speed + "MPH");
                     dayHumidity.text("Humidity: " + data2.current.humidity + "%");
@@ -77,8 +84,60 @@ function getAPIKey() {
                 });
         });
 }
-getAPIKey();
+
+function check() {
+    if (localStorage.getItem("cities") != null) {
+        return json.parse(localStorage.getItem("cities"));
+    } else {
+        return saveCity;
+    }
+}
 
 function save() {
+    saveCity = check();
+    saveCity.unshift(userInput);
 
+    if (saveCity.length > 5) {
+        saveCity.pop();
+        localStorage.setItem("cities", JSON.stringify(saveCity));
+    } else {
+        localStorage.setItem("cities", JSON.stringify(saveCity));
+    }
 }
+
+function display() {
+    saveCity = check();
+    $.each(saveCity, function(i) {
+        var button = $('<button class = "btn btn-dark">/>');
+        button.text(saveCity[i]);
+        var list = $("<li/>");
+        list.append(button);
+        recentSearch.append(list);
+    });
+}
+
+function updateDiv() {
+    recentSearch.html("");
+    fiveDayPhoto.html("");
+    dayIcon.html("");
+}
+
+recentSearch.click(function(event) {
+    var tar = $(event.target);
+    userInput = tar.text();
+    updateDiv();
+    getAPIKey();
+    save();
+    check();
+    display();
+});
+
+display();
+jQuery.fn.visible = function() {
+    return this.css("visibility", "visible");
+};
+
+jQuery.fn.invisible = function() {
+    return this.css("visibility", "hidden");
+};
+$(".Deposit").css("visibility", "visible");
