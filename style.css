@@ -1,6 +1,6 @@
 body {
     overflow: hidden;
-    margin: 0;
+    margin: 2px;
 }
 
 header {
@@ -14,13 +14,6 @@ header {
     justify-content: center;
     align-items: center;
 }
-
-
-/* header h1 {
-    color: white;
-    font-weight: bold;
-    font-size: 2rem;
-} */
 
 aside h2 {
     font-size: 35px;
@@ -72,7 +65,7 @@ button {
 
 #currentDayWeather h1 {
     font-size: 20px;
-    padding-top: 5vh;
+    padding-top: 2vh;
     font-weight: bold;
 }
 

@@ -21,7 +21,10 @@ var userInput = $("#userInfo");
 var saveCity = [];
 submitBtn.click(function() {
     userInput = $("#userInfo").val();
+    updateDiv();
     getAPIKey();
+    save();
+    display();
 });
 
 function getAPIKey() {
@@ -87,22 +90,27 @@ function getAPIKey() {
 
 function check() {
     if (localStorage.getItem("cities") != null) {
-        return json.parse(localStorage.getItem("cities"));
+        return JSON.parse(localStorage.getItem("cities"));
     } else {
         return saveCity;
     }
 }
 
 function save() {
-    saveCity = check();
-    saveCity.unshift(userInput);
+    var saved = check();
+    console.log(saved);
+    if (saved != null) {
+        saveCity = saved;
+        saveCity.unshift(userInput);
 
-    if (saveCity.length > 5) {
-        saveCity.pop();
-        localStorage.setItem("cities", JSON.stringify(saveCity));
-    } else {
-        localStorage.setItem("cities", JSON.stringify(saveCity));
+        if (saveCity.length > 5) {
+            // saveCity.pop();
+            localStorage.setItem("cities", JSON.stringify(saveCity));
+        } else {
+            localStorage.setItem("cities", JSON.stringify(saveCity));
+        }
     }
+
 }
 
 function display() {
@@ -133,11 +141,3 @@ recentSearch.click(function(event) {
 });
 
 display();
-jQuery.fn.visible = function() {
-    return this.css("visibility", "visible");
-};
-
-jQuery.fn.invisible = function() {
-    return this.css("visibility", "hidden");
-};
-$(".Deposit").css("visibility", "visible");
