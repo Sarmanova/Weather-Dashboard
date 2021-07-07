@@ -1,3 +1,4 @@
+// HTML recall 
 var day = $("#currentDayWeather");
 var dayCity = $("#dailyCity");
 var dayTemp = $("#dayTemp");
@@ -12,13 +13,13 @@ var fiveDayWind = $(".myCardWind");
 var fiveDayWind = $(".myCardWind");
 var fiveDayHumidity = $(".myCardHumidity");
 var fiveDayDate = $(".myCardDate");
-// Input Button
 var submitBtn = $("#submitBtn");
 var recentSearch = $("#recentSearch");
-
 var currentDayWeather = $("#currentDayWeather");
+// JS vars
 var userInput = $("#userInfo");
 var saveCity = [];
+//  An eventlistener that listens for when the user clicks the submit button
 submitBtn.click(function() {
     userInput = $("#userInfo").val();
     updateDiv();
@@ -26,7 +27,7 @@ submitBtn.click(function() {
     save();
     display();
 });
-
+// To call API to get the weather informations 
 function getAPIKey() {
     fetch(
             "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -87,7 +88,7 @@ function getAPIKey() {
                 });
         });
 }
-
+// this function checks if you have another cities  inside of our local storge 
 function check() {
     if (localStorage.getItem("cities") != null) {
         return JSON.parse(localStorage.getItem("cities"));
@@ -95,7 +96,7 @@ function check() {
         return saveCity;
     }
 }
-
+// Save  new city name user just inputted   
 function save() {
     var saved = check();
     console.log(saved);
@@ -104,7 +105,6 @@ function save() {
         saveCity.unshift(userInput);
 
         if (saveCity.length > 5) {
-            // saveCity.pop();
             localStorage.setItem("cities", JSON.stringify(saveCity));
         } else {
             localStorage.setItem("cities", JSON.stringify(saveCity));
@@ -112,7 +112,7 @@ function save() {
     }
 
 }
-
+// Displays our search history in a list 
 function display() {
     saveCity = check();
     $.each(saveCity, function(i) {
@@ -123,13 +123,13 @@ function display() {
         recentSearch.append(list);
     });
 }
-
+//  Refreshes divs for a next search 
 function updateDiv() {
     recentSearch.html("");
     fiveDayPhoto.html("");
     dayIcon.html("");
 }
-
+//An EventListener listening for if the user clicks on one of his previous cities
 recentSearch.click(function(event) {
     var tar = $(event.target);
     userInput = tar.text();
