@@ -7,5 +7,7 @@ Weather Dashboard using Open Weather API  runs in the browser and features dynam
 
 
 Demo
+<img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/012/481/original/Capture.PNG?1625616707">
+
 
 
